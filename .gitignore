@@ -4,4 +4,5 @@
 .httr-oauth
 .DS_Store
 models/.ipynb_checkpoints
+models/__pycache__
 models/manifesto_articles_preprocessed.csv
