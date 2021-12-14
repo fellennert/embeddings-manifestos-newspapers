@@ -249,7 +249,8 @@ class reproducible_Top2Vec(Top2Vec):
                          'random_state':random_state}
 
         umap_model = umap.UMAP(**umap_args).fit(self._get_document_vectors(norm=False))
-
+        self.umap_model = umap_model
+        
         # find dense areas of document vectors
         logger.info('Finding dense areas of documents')
 
@@ -259,7 +260,8 @@ class reproducible_Top2Vec(Top2Vec):
                             'cluster_selection_method': 'eom'}
 
         cluster = hdbscan.HDBSCAN(**hdbscan_args).fit(umap_model.embedding_)
-
+        self.cluster = cluster
+        
         # calculate topic vectors from dense areas of documents
         logger.info('Finding topics')
 
